@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Cart - Sapphire</title>
+</head>
+<body>
+
+    <header>
+        <h1 class="logoname">Sapphire</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
+
+    <nav class="nav">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </a>
+
+        <div class="nav-btns">
+            <a href="#" class="nav-user"><i class="fa-solid fa-user"></i></a>
+            <a href="cart.html" class="nav-cart">
+                <i class="fa-solid fa-cart-arrow-down"></i>
+                <span id="cart-count">(0)</span>
+            </a>
+        </div>
+    </nav>
+
+    <section class="cart-section">
+        <h2 class="section-title">Shopping Cart</h2>
+        
+        <div class="cart-container">
+       
+            <!-- قائمة المنتجات -->
+            <div class="cart-items" id="cart-items-container">
+                <!-- هنا هتظهر المنتجات -->
+            </div>
+
+            <!-- ملخص الفاتورة -->
+            <div class="cart-summary">
+                <h3>Order Summary</h3>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">LE 0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="cart-total">LE 0.00</span>
+                </div>
+                <button class="checkout-btn">Proceed to Checkout</button>
+                <a href="products.html" class="continue-shopping">Continue Shopping</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- كود عرض البيانات (تم تعديله ليطابق الـ IDs) -->
+    <script>
+        window.onload = function() {
+            displayCart();
+            updateCartCount();
+        };
+
+        function displayCart() {
+            // 1. جلب البيانات (تأكدي إن المفتاح 'cart' هو اللي بتستخدمه في addToCart)
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            // 2. الإشارة للعناصر بالـ IDs الصح
+            let cartItemsDiv = document.getElementById('cart-items-container');
+            let totalPriceSpan = document.getElementById('cart-subtotal');
+            let finalTotalSpan = document.getElementById('cart-total');
+            
+            let total = 0;
+
+            // 3. لو السلة فارغة
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = '<p class="empty-cart">Your cart is currently empty.</p>';
+            } else {
+                // 4. بناء قائمة المنتجات
+                cartItemsDiv.innerHTML = '';
+                cart.forEach((item, index) => {
+                    total += item.price;
+                    cartItemsDiv.innerHTML += `
+                        <div class="cart-item">
+                            <img src="images/placeholder.png" alt="${item.name}">
+                            <div class="item-details">
+                                <h4>${item.name}</h4>
+                                <p>LE ${item.price.toFixed(2)}</p>
+                            </div>
+                            <button class="remove-btn" onclick="removeFromCart(${index})">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                });
+            }
+
+            // 5. تحديث الأسعار
+            totalPriceSpan.innerText = `LE ${total.toFixed(2)}`;
+            finalTotalSpan.innerText = `LE ${total.toFixed(2)}`;
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); 
+            localStorage.setItem('cart', JSON.stringify(cart)); 
+            displayCart(); 
+            updateCartCount(); 
+        }
+        
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let countSpan = document.getElementById('cart-count');
+            if(countSpan) countSpan.innerText = `(${cart.length})`;
+        }
+    </script>
+</body>
+</html>

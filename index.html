@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="website" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="icon"href="images/logo.png">
+    <!-- FOR ICONS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <!-- for poppins -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- for nav section  -->
+<title>Sapphire</title>
+  </head>  
+  <body>
+    <header>
+      <h1 class="logoname">Sapphire</h1>
+       <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>  
+    <nav class="nav">
+      <a href="#"class="logo">
+         <img src="images/logo.png" >
+      </a>
+      <form class="search">
+        <input type="text" placeholder="Search Product Here" required />
+        <button>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+      
+      <div class="nav-btns">
+     <a href="#" class="nav-user">
+      <i class="fa-solid fa-user"></i>
+     </a>
+
+<a href="cart.html" class="nav-cart">
+  <i class="fa-solid fa-cart-arrow-down"></i>
+  <span id="cart-count">(0)</span> 
+</a>
+</a>
+     </a>
+      </div>
+    </nav>
+    <!-- end of nav -->
+
+     <!-- quiz sec -->
+    <section class="quiz-sec">
+      <div class="quiz-sec1">
+        you should takecare of your skin as we do,take the quiz & know your skin better <span class="quiz-11">,with love sapphire.</span>
+      </div>
+ <a href="quiz.html" class="quiz-btn">Take Quiz</a>
+    </section>
+
+<!-- BEST SELLERS SECTION -->
+    <section class="best-sellers">
+        <h2 class="section-title">Our Best Sellers</h2>
+        <p class="section-subtitle">Top picks loved by our customers</p>
+
+        <div class="product-container">
+
+            <div class="product-123">
+                        <div class="product-card">
+                <div class="product-img">
+                    <img src="images/IMG_s (2).png" alt="Serum">
+                </div>
+                
+                <div class="product-info">
+                    <h3>Hydrating Serum</h3>
+                    <p class="price">LE 250.00</p>
+                   <a href="#" class="btn-add" onclick="addToCart('Hydrating Serum', 250); return false;">Add to Cart</a>
+                </div>
+           
+
+
+            </div>
+            <div class="product-123">
+                <div class="product-img">
+                    <img src="images/IMG_c-1.png" alt="Cream">
+                </div>
+                <div class="product-info">
+                    <h3>Vitamin C Cream</h3>
+                    <p class="price">LE 300.00</p>
+               <a href="#" class="btn-add" onclick="addToCart('Vitamin C Cream', 300); return false;">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-123">
+                <div class="product-img">
+                    <img src="images/IMG_f.png" alt="Cleanser">
+                </div>
+                <div class="product-info">
+                    <h3>Foam Cleanser</h3>
+                    <p class="price">LE 300.00</p>
+                    <a href="#" class="btn-add" onclick="addToCart('Foam Cleanser', 300); return false;">Add to Cart</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ABOUT US SECTION -->
+<section class="about-section">
+    <div class="aboutus-content">
+        <h2>About <span>Sapphire</span></h2>
+        <p>Welcome to our sapphire website! 
+          Your skin deserves care and attention. Understanding your skin type is the first step to choosing the right skincare products. 
+          Our website is designed to help you learn more about your skin and how to take care of it in a simple way.
+          Everyone’s skin is different, so we created a simple quiz that helps you find your skin type. After you complete the quiz, 
+          we recommend products that match your skin’s needs.We believe that skincare should be easy, simple, and helpful for everyone.</p>
+    </div>
+</section>
+
+<!-- SHOP CATEGORIES SECTION -->
+<section class="shop-categories">
+    <h2 class="section-title">Shop Collection</h2>
+    <p class="section-subtitle">Find what suits you best</p>
+    <div class="categories-container">
+
+        <a href="new-arrivals.html" class="cat-new">
+            <div class="circle-content">
+                <h3>New Arrivals</h3>
+                <span>Shop Now</span>
+            </div>
+        </a>
+        <a href="sales.html" class="cat-sale">
+            <div class="circle-content">
+                <h3>Sales</h3>
+                <span>Shop Now</span>
+            </div>
+        </a>
+        <a href="products.html" class="cat-all">
+            <div class="circle-content">
+                <h3>All Items</h3>
+                <span>Shop Now</span>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+        <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <img src="images/logo.png" alt="Sapphire Logo" class="footer-logo">
+                <p>Your journey to radiant skin starts here. Pure, organic, and cruelty-free.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="quiz.html">Skin Quiz</a></li>
+                    <li><a href="contact.html">About Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul class="contact-list">
+                    <li><i class="fa-solid fa-location-dot"></i> Cairo, Egypt</li>
+                    <li><i class="fa-solid fa-phone"></i> +20 123 456 789</li>
+                    <li><i class="fa-solid fa-envelope"></i> support@sapphire.com</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sapphire. All Rights Reserved. | Designed by us|</p>
+        </div>
+    </footer>
+
+
+
+ <script src="script.js"> </script>
+
+
+
+
+
+ 
+  </body>
+</html>

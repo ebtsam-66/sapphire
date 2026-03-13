@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="icon" href="images/logo.png">
+    <!-- FOR ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <!-- for poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Products - Sapphire</title>
+<!-- في الآخر قبل إغلاق الـ head -->
+<script src="script.js"></script>
+</head>  
+
+<body>
+   
+    <header>
+        <h1 class="logoname">Sapphire</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>  
+    <nav class="nav">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </a>
+        <form class="search">
+            <input type="text" placeholder="Search Product Here" required />
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <div class="nav-btns">
+            <a href="#" class="nav-user"><i class="fa-solid fa-user"></i></a>
+      <a href="cart.html" class="nav-cart">
+  <i class="fa-solid fa-cart-arrow-down"></i>
+  <span id="cart-count">(0)</span> 
+</a>
+        </div>
+    </nav>
+
+     <!-- تعديل الـ section بتاعة المنتجات -->
+<section class="products-list">
+    <h2 class="page-title">Our Products</h2>
+    <div class="product-container">
+
+        <!-- منتج 1 -->
+        <div class="product-123">
+            <div class="product-img">
+                <img src="images/IMG_s (2).png" alt="Serum">
+            </div>
+            <div class="product-info">
+                <h3><a href="product-details.html">Hydrating Serum</a></h3>
+                <p class="price">LE 250.00</p>
+                <!-- تم إضافة onclick -->
+                <a href="javascript:void(0)" class="btn-add" onclick="addToCart('Hydrating Serum', 250)">Add to Cart</a>
+            </div>
+        </div>
+
+        <!-- منتج 2 -->
+        <div class="product-123">
+            <div class="product-img">
+                <img src="images/IMG_c-1.png" alt="Cream">
+            </div>
+            <div class="product-info">
+                <h3><a href="product-details.html">Vitamin C Cream</a></h3>
+                <p class="price">LE 300.00</p>
+                <a href="javascript:void(0)" class="btn-add" onclick="addToCart('Vitamin C Cream', 300)">Add to Cart</a>
+            </div>
+        </div>
+
+        <!-- منتج 3 -->
+        <div class="product-123">
+            <div class="product-img">
+                <img src="images/IMG_f.png" alt="Cleanser">
+            </div>
+            <div class="product-info">
+                <h3><a href="product-details.html">Foam Cleanser</a></h3>
+                <p class="price">LE 300.00</p>
+                <a href="javascript:void(0)" class="btn-add" onclick="addToCart('Foam Cleanser', 300)">Add to Cart</a>
+            </div>
+        </div>
+
+        <!-- منتج 4 -->
+        <div class="product-123">
+            <div class="product-img">
+                <img src="images/3d4.png" alt="Sunscreen">
+            </div>
+            <div class="product-info">
+                <h3><a href="product-details.html">SPF 50 Sunscreen</a></h3>
+                <p class="price">LE 230.00</p>
+                <a href="javascript:void(0)" class="btn-add" onclick="addToCart('SPF 50 Sunscreen', 230)">Add to Cart</a>
+            </div>
+        </div>
+        
+        <!-- منتج 5 -->
+        <div class="product-123">
+            <div class="product-img">
+                <img src="images/3d5.png" alt="Night Oil">
+            </div>
+            <div class="product-info">
+                <h3><a href="product-details.html">Rose Night Oil</a></h3>
+                <p class="price">LE 350.00</p>
+                <a href="javascript:void(0)" class="btn-add" onclick="addToCart('Rose Night Oil', 350)">Add to Cart</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>

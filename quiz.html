@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="icon" href="images/logo.png">
+    <!-- FOR ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <!-- for poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Skin Quiz - Sapphire</title>
+</head>  
+
+<body>
+    <!-- Same Header -->
+    <header>
+        <h1 class="logoname">Sapphire</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>  
+
+    <!-- Same Nav -->
+    <nav class="nav">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </a>
+        <form class="search">
+            <input type="text" placeholder="Search Product Here" required />
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <div class="nav-btns">
+            <a href="#" class="nav-user"><i class="fa-solid fa-user"></i></a>
+        <a href="cart.html" class="nav-cart">
+  <i class="fa-solid fa-cart-arrow-down"></i>
+  <span id="cart-count">(0)</span> 
+</a>
+        </div>
+    </nav>
+
+    <!-- QUIZ CONTAINER -->
+    <section class="quiz-container">
+        <h2>Discover Your Skin Type</h2>
+        <p>Answer the following 5 questions to find the perfect routine for you.</p>
+
+        <form id="skinQuizForm">
+            
+            <!-- Question 1 -->
+            <div class="quiz-question">
+                <h3>1. How does your skin feel when you wake up?</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="oily">
+                    <span>Oily and shiny</span>
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="dry">
+                    <span>Tight and dry</span>
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="combination">
+                    <span>Oily on nose/forehead, dry on cheeks</span>
+                </label>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="quiz-question">
+                <h3>2. How do your pores look?</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="oily">
+                    <span>Large and visible</span>
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="dry">
+                    <span>Small and barely visible</span>
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="combination">
+                    <span>Visible only on the nose</span>
+                </label>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="quiz-question">
+                <h3>3. How does your skin react to the sun?</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="sensitive">
+                    <span>Burns easily and turns red</span>
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="oily">
+                    <span>Gets very shiny and sweaty</span>
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="dry">
+                    <span>Feels tight and parched</span>
+                </label>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="quiz-question">
+                <h3>4. After washing your face, how does it feel?</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="oily">
+                    <span>Oil returns quickly</span>
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="dry">
+                    <span>Dry and flaky if I don't use moisturizer</span>
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="normal">
+                    <span>Fresh and comfortable</span>
+                </label>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="quiz-question">
+                <h3>5. What is your main skin concern?</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="oily">
+                    <span>Acne and blackheads</span>
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="dry">
+                    <span>Dry patches and dullness</span>
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="sensitive">
+                    <span>Redness and irritation</span>
+                </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="button" class="submit-quiz-btn" onclick="calculateQuizResult()">See My Results</button>
+        </form>
+
+        <!-- RESULT SECTION (Hidden by default) -->
+        <div id="quizResult" class="quiz-result" style="display: none;">
+            <h2 id="resultTitle">Your Skin Type is: <span></span></h2>
+            <p id="resultDescription"></p>
+            
+            <h3 class="recommended-title">Recommended Products for You:</h3>
+            <div id="recommendedProducts" class="products-Box">
+                <!-- Products will be inserted here by JavaScript -->
+            </div>
+            
+            <a href="products.html" class="back-to-shop">Continue Shopping</a>
+        </div>
+
+    </section>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function calculateQuizResult() {
+            // 1. Collect answers
+            let scores = {
+                oily: 0,
+                dry: 0,
+                combination: 0,
+                sensitive: 0,
+                normal: 0
+            };
+
+            // Loop through questions 1 to 5
+            for (let i = 1; i <= 5; i++) {
+                let selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected) {
+                    scores[selected.value]++;
+                } else {
+                    alert("Please answer all questions!");
+                    return; // Stop function if a question is missed
+                }
+            }
+
+            // 2. Find the winner (highest score)
+            let skinType = "";
+            let maxScore = 0;
+
+            for (let type in scores) {
+                if (scores[type] > maxScore) {
+                    maxScore = scores[type];
+                    skinType = type;
+                }
+            }
+
+            // 3. Display Results
+            showResult(skinType);
+        }
+
+        function showResult(type) {
+            // Hide the form, show the result div
+            document.getElementById('skinQuizForm').style.display = 'none';
+            let resultDiv = document.getElementById('quizResult');
+            resultDiv.style.display = 'block';
+
+            let titleSpan = document.querySelector('#resultTitle span');
+            let descP = document.getElementById('resultDescription');
+            let productsDiv = document.getElementById('recommendedProducts');
+
+            // Define content based on type
+            if (type === 'oily') {
+                titleSpan.innerText = "Oily Skin";
+                descP.innerText = "Your skin produces excess oil. You need products that control shine without stripping moisture.";
+                productsDiv.innerHTML = `
+                    <div class="products" style="background:white; padding:10px; border-radius:10px; text-align:center;">
+                        <img src="images/3d2.png" style="width:100px;"><h3>Foam Cleanser</h3><p>Deep cleaning</p>
+                    </div>
+                    <div class="products" style="background:white; padding:10px; border-radius:10px; text-align:center;">
+                        <img src="images/3d4.png" style="width:100px;"><h3>SPF 50 Sunscreen</h3><p>Oil free</p>
+                    </div>
+                `;
+            } else if (type === 'dry') {
+                titleSpan.innerText = "Dry Skin";
+                descP.innerText = "Your skin lacks moisture. Focus on hydrating serums and rich creams.";
+                productsDiv.innerHTML = `
+                    <div class="products" style="background:white; padding:10px; border-radius:10px; text-align:center;">
+                        <img src="images/3d3.png" style="width:100px;"><h3>Hydrating Serum</h3><p>Intense boost</p>
+                    </div>
+                    <div class="products" style="background:white; padding:10px; border-radius:10px; text-align:center;">
+                        <img src="images/3d1.webp" style="width:100px;"><h3>Vitamin C Cream</h3><p>Nourishing</p>
+                    </div>
+                `;
+            } else if (type === 'sensitive') {
+                titleSpan.innerText = "Sensitive Skin";
+                descP.innerText = "Your skin is easily irritated. Use gentle, fragrance-free products.";
+                productsDiv.innerHTML = `
+                    <div class="products" style="background:white; padding:10px; border-radius:10px; text-align:center;">
+                        <img src="images/3d3.png" style="width:100px;"><h3>Hydrating Serum</h3><p>Gentle care</p>
+                    </div>
+                `;
+            } else {
+                // Default / Combination / Normal
+                titleSpan.innerText = "Combination / Normal Skin";
+                descP.innerText = "You have a mix of dry and oily areas. Balance is key for your routine.";
+                productsDiv.innerHTML = `
+                    <div class="products" style="background:white; padding:10px; border-radius:10px; text-align:center;">
+                        <img src="images/3d5.png" style="width:100px;"><h3>Rose Night Oil</h3><p>Balance</p>
+                    </div>
+                    <div class="products" style="background:white; padding:10px; border-radius:10px; text-align:center;">
+                        <img src="images/3d2.png" style="width:100px;"><h3>Foam Cleanser</h3><p>Daily use</p>
+                    </div>
+                `;
+            }
+            
+            // Scroll to top so user sees result
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
